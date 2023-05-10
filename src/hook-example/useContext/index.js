@@ -15,11 +15,18 @@ export default function App() {
 
 function Child() {
   const count = useContext(AppContext);
-  return (
+  return (<>
     <h2>{count}</h2>
-  )
+    <AppContext.Consumer>
+      // 接收Provider传过来的数据
+      (data) => {
+        console.log(data)
+      }
+    </AppContext.Consumer>
+  <>)
 }
 
 // useContext 
 // 1.useContext可以帮助我们跨越组件层级直接传递变量，实现数据共享。
 // 2.Context的作用就是对它所包含的组件树提供全局共享数据的一种技术。
+// 3.Consumer组件内可以通过匿名函数的形式接收Provider传过来的数据
