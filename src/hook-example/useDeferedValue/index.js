@@ -17,7 +17,7 @@ export default function Index(){
      setActive(activeItem) // 立即更新
   }
 
-  console.log('deferActive', deferActive);
+  console.log('deferActive', active, deferActive);
   const renderData = tab[deferActive] // 使用滞后状态
 
   return <div>

@@ -12,11 +12,16 @@ const DemoChildren = memo((props)=>{
 
 const App = ({ id }) =>{
   const [number, setNumber] = useState(1)
-  /* 此时usecallback的第一参数 (sonName)=>{ console.log(sonName) }
-  经过处理赋值给 getInfo */
-  const getInfo  = useCallback((sonName)=>{
+  
+  // 只有当id变化，才会生成新的函数getInfo
+  const getInfo = useCallback((sonName)=>{
     console.log(sonName)
-  },[id])
+  },[id]);
+
+  // 每一次重新render，会生成新的函数getInfo1
+  const getInfo1 = (sonName)=>{
+    console.log(sonName)
+  };
 
   return <div>
       {/* 点击按钮触发父组件更新 ，但是子组件没有更新 */}

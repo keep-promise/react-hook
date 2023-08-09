@@ -1,11 +1,11 @@
 import { Component, forwardRef, useState, useEffect, useRef, useImperativeHandle} from "react";
 
 // 类组件
-// class Child extends Component {
+// class ChildClass extends Component {
 //   render() {
 //     return (
 //       <div>
-//         <button>点我</button>
+//         <button>class Component</button>
 //       </div>
 //     );
 //   }
@@ -13,20 +13,22 @@ import { Component, forwardRef, useState, useEffect, useRef, useImperativeHandle
 
 
 // 函数组件
-// function Child() {
+// function ChildFunction() {
 //   return (
 //     <div>
-//       <button>点我</button>       
+//       <button>function Component</button>       
 //     </div>
 //   )
 // }
 
 // function App() {
 //   // ref指向的是子组件本身
-//   const childref = useRef(null);
+//   const childClassRef = useRef(null);
+//   const childFunctionref = useRef(null);
 
 //   useEffect(() => {
-//     console.log('childref', childref) 
+//     console.log('childClassRef', childClassRef) // {current: Child}
+//     console.log('childFunctionref', childFunctionref) // {current: null}
 //     // 子组件是class组件可以直接获取子组件ref {current: Child}
 //     // 子组件是函数组件不能直接获得ref {current: null}
 
@@ -36,7 +38,8 @@ import { Component, forwardRef, useState, useEffect, useRef, useImperativeHandle
 
 //   return (
 //     <div styleName="container">
-//       <Child ref={childref} />
+//       <ChildClass ref={childClassRef} />
+//       <ChildFunction ref={childFunctionref} />
 //     </div>
 //   );
 // }
@@ -86,7 +89,7 @@ import { Component, forwardRef, useState, useEffect, useRef, useImperativeHandle
 //   const child = useRef();
 
 //   useEffect(() => {
-//     console.log(child);
+//     console.log('forwardRef fun', child);
 //   }, []);
 
 //   return (
@@ -101,73 +104,73 @@ import { Component, forwardRef, useState, useEffect, useRef, useImperativeHandle
 
 
 
-// function App(Component) {
-//   const WrappedComponent = (props) => {
-//     const childRef = useRef();
-//     const { parentRef, ...rest } = props;
+function App(Component) {
+  const WrappedComponent = (props) => {
+    const childRef = useRef();
+    const { parentRef, ...rest } = props;
 
-//     // 封装供外部主动调用的接口
-//     useImperativeHandle(parentRef, () => ({
-//       toggleStatus: () => {
-//         childRef.current.onToggleStatus();
-//       },
-//       getStatus: () => {
-//         return childRef?.current?.state?.status;
-//       },
-//     }));
+    // 封装供外部主动调用的接口
+    useImperativeHandle(parentRef, () => ({
+      toggleStatus: () => {
+        childRef.current.onToggleStatus();
+      },
+      getStatus: () => {
+        return childRef?.current?.state?.status;
+      },
+    }));
 
-//     return <Component {...rest} ref={childRef} />;
-//   };
+    return <Component {...rest} ref={childRef} />;
+  };
 
-//   return forwardRef((props, ref) => {
-//     return <WrappedComponent {...props} parentRef={ref} />;
-//   });
+  return forwardRef((props, ref) => {
+    return <WrappedComponent {...props} parentRef={ref} />;
+  });
+}
+
+
+// function Son (props,ref) {
+//   console.log(props)
+//   const inputRef = useRef(null)
+//   const [ inputValue , setInputValue ] = useState('')
+//   useImperativeHandle(ref,()=>{
+//      const handleRefs = {
+//          /* 声明方法用于聚焦input框 */
+//          onFocus(){
+//             inputRef.current.focus()
+//          },
+//          /* 声明方法用于改变input的值 */
+//          onChangeValue(value){
+//              setInputValue(value)
+//          }
+//      }; // {onFocus: ƒ, onChangeValue: ƒ}
+//      return handleRefs
+//   },[]);
+//   return <div>
+//       <input
+//           placeholder="请输入内容"
+//           ref={inputRef}
+//           value={inputValue}
+//       />
+//   </div>
 // }
 
+// const ForwarSon = forwardRef(Son)
 
-function Son (props,ref) {
-  console.log(props)
-  const inputRef = useRef(null)
-  const [ inputValue , setInputValue ] = useState('')
-  useImperativeHandle(ref,()=>{
-     const handleRefs = {
-         /* 声明方法用于聚焦input框 */
-         onFocus(){
-            inputRef.current.focus()
-         },
-         /* 声明方法用于改变input的值 */
-         onChangeValue(value){
-             setInputValue(value)
-         }
-     }; // {onFocus: ƒ, onChangeValue: ƒ}
-     return handleRefs
-  },[]);
-  return <div>
-      <input
-          placeholder="请输入内容"
-          ref={inputRef}
-          value={inputValue}
-      />
-  </div>
-}
-
-const ForwarSon = forwardRef(Son)
-
-class App extends Component{
-  inputRef = null
-  handerClick(){
-     const { onFocus , onChangeValue } =this.inputRef;
-     console.log('inputRef', this.inputRef); // {onFocus: ƒ, onChangeValue: ƒ}
-     onFocus()
-     onChangeValue('let us learn React!')
-  }
-  render(){
-      return <div style={{ marginTop:'50px' }} >
-          <ForwarSon ref={node => (this.inputRef = node)} />
-          <button onClick={this.handerClick.bind(this)} >操控子组件</button>
-      </div>
-  }
-}
+// class App extends Component{
+//   inputRef = null
+//   handerClick(){
+//      const { onFocus , onChangeValue } =this.inputRef;
+//      console.log('inputRef', this.inputRef); // {onFocus: ƒ, onChangeValue: ƒ}
+//      onFocus()
+//      onChangeValue('let us learn React!')
+//   }
+//   render(){
+//       return <div style={{ marginTop:'50px' }} >
+//           <ForwarSon ref={node => (this.inputRef = node)} />
+//           <button onClick={this.handerClick.bind(this)} >操控子组件</button>
+//       </div>
+//   }
+// }
 
 
 export default App;
