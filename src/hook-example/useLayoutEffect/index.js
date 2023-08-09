@@ -1,25 +1,34 @@
-import { useRef, useLayoutEffect } from 'react';
-let x = 10;
-
-let y = 20;
-
-function getPositon() {
-  return {
-    x: x+10,
-    y: y+10
-  }
-}
+import { useRef, useState, useLayoutEffect, useEffect } from 'react';
 
 const App = () => {
-  const target = useRef()
+  const target = useRef();
+  const [state, setState] = useState("hello world")
+
+  // 先渲染屏幕后，再执行
+  // useEffect(() => {
+  //   let i = 0;
+  //   while(i <= 100000000) {
+  //     i++;
+  //   };
+  //   setState("world hello");
+  //   console.log('useEffect ref', target)
+  // }, []);
+
+  // 渲染屏幕之前执行完成，useLayoutEffect中的回调函数没有执行完成，就不会渲染屏幕
   useLayoutEffect(() => {
-    /*我们需要在dom绘制之前，移动dom到制定位置*/
-    const { x ,y } = getPositon() /* 获取要移动的 x,y坐标 */
-    // animate(target.current, { x,y })
+    console.log('useLayoutEffect ref', target);
+    let i = 0;
+    while(i <= 100000000) {
+      i++;
+    };
+    setState("world hello");
+    
   }, []);
+
+
   return (
     <div >
-      <span ref={ target } className="animate"></span>
+      <span ref={ target } className="animate">{state}</span>
     </div>
   )
 }
