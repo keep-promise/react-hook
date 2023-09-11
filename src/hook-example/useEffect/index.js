@@ -14,7 +14,7 @@ function App() {
 
   // useEffect(() => {
   //   console.log('依赖项为对象类型'); // 每次render都会重新执行
-  // }, [temObj]) // 每一次render，tempObj都是新的，所以每一次都会执行
+  // }, [temObj]) // 每一次render，tempObj都是新的，所以每一次都会执行 -- 无限执行
 
   useEffect(() => {
     console.log('依赖项为基本类型');

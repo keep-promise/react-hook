@@ -16,10 +16,10 @@ export default function App(){
   const [ renderData, setRenderData ] = React.useState(tab[active]) //不需要立即响应的任务，过渡任务
   const [ isPending, startTransition ] = React.useTransition();
   const handleChangeTab = (activeItem) => {
-     setActive(activeItem) // 立即更新
-     startTransition(()=>{ // startTransition 里面的任务优先级低
-        setRenderData(tab[activeItem]);
-     })
+    setActive(activeItem) // 立即更新
+    startTransition(() => { // startTransition 里面的任务优先级低
+      setRenderData(tab[activeItem]);
+    });
   }
 
   console.log('useTransition', active, isPending);

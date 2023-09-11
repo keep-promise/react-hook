@@ -1,10 +1,10 @@
 import React from 'react';
-import Example from './hook-example/useContext';
+// import Example from './hook-example/useContext';
 // import Example from './hook-example/useReducer';
 // import Example from './hook-example/useRedux';
 // import Example from './hook-example/useRef';
 // import Example from './hook-example/forwardref';
-// import Example from './hook-example/useSyncExternalStore'; // 使用外部状态
+import Example from './hook-example/useSyncExternalStore'; // 使用外部状态
 
 // import Example from './hook-example/useHook'; 
 

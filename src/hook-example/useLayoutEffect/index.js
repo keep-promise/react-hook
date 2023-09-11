@@ -4,7 +4,7 @@ const App = () => {
   const target = useRef();
   const [state, setState] = useState("hello world")
 
-  // 先渲染屏幕后，再执行
+  // 先渲染屏幕后，再执行回调
   // useEffect(() => {
   //   let i = 0;
   //   while(i <= 100000000) {

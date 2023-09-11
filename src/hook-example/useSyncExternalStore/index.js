@@ -23,7 +23,7 @@ function App(){
   const state = useSyncExternalStore(store.subscribe, () => {
     console.log('getSnapshot', store.getState().number);
     return store.getState().number;
-  })
+  });
   console.log(state)
   return <div>
       {state}
