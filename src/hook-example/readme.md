@@ -1,19 +1,17 @@
  
 
-概览
-==========
+# Hooks
 
 **Hook只能在函数组件中调用**
 
 
-useState
-=========
+## useState
 
 ```js
 import Reac , {useState} from 'react'
 
 const App = (params) => {
-	const [count,setCount] = useState(0)
+	const [count,setCount] = useState(0);
 
 	const handleClick = () => {
 		setCount(1)
@@ -22,7 +20,7 @@ const App = (params) => {
 		// 也可以给setCount赋值一个函数
 		setCount((count) => {
 			console.log(count) // 打印旧的count
-			count++
+			count++;
 			console.log(count) // 打印新的count
 			return count // 返回最新值覆盖count
 		})
@@ -42,8 +40,10 @@ const App = (params) => {
 
 ```
 
-[](https://blog.csdn.net/qq_38053677/article/details/126796437)useEffect && UseLayoutEffect && useInsertionEffect
-=================================================================================================================
+## useEffect 
+## UseLayoutEffect 
+## useInsertionEffect
+
 
 useLayoutEffect的方法签名和useEffect一样，功能也类似。不同点在于，useLayoutEffect的执行时机要早于useEffect，它会在DOM改变后调用。在老版本的React中它和useEffect的区别比较好演示，React18中，useEffect的运行方式有所变化，所以二者区别不好演示。
 

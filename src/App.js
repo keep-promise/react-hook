@@ -1,5 +1,5 @@
 import React from 'react';
-// import Example from './hook-example/useContext';
+import Example from './hook-example/useContext';
 // import Example from './hook-example/useReducer';
 // import Example from './hook-example/useRedux';
 // import Example from './hook-example/useRef';
@@ -11,8 +11,9 @@ import React from 'react';
 // import Example from './hook-example/useTransition'; // 过渡任务 数据更新任务延时
 // import Example from './hook-example/useDeferedValue'; // 过渡任务 状态延时
 
+// import Example from './hook-example/useEffect'; // 异步，dom绘制之后执行
 // import Example from './hook-example/useState'; // 异步，dom绘制之后执行
-import Example from './hook-example/useLayoutEffect'; // 同步，DOM 更新之后，浏览器绘制之前
+// import Example from './hook-example/useLayoutEffect'; // 同步，DOM 更新之后，浏览器绘制之前
 // import Example from './hook-example/useInsertionEffect'; // 解决 CSS-in-JS 在渲染中注入样式
 
 // import Example from './hook-example/useImperativeHandle-forwardRef';

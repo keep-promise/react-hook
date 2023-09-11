@@ -14,6 +14,7 @@
 import { useState } from 'react';
 
 const App = () => {
+  const [count, setCount] = useState(0);
   const [number, setNumber] = useState(0); // initData接收函数
   const [obj, setObj] = useState({name: 'aaa'});
 
@@ -22,7 +23,22 @@ const App = () => {
     setObj(obj); // 直接改变 `state`，在内存中指向的地址相同
   }
 
-  console.log('app render', number, obj);
+  const handleClick = () => {
+		setCount(1)
+		console.log('count1', count) // 打印: 0 ，说明setCount是异步代码
+
+		// 也可以给setCount赋值一个函数
+		setCount((count) => {
+			console.log('count2', count) // 打印旧的count 1
+			count++;
+			console.log('count3', count) // 打印新的count 2
+			return count // 返回最新值覆盖count
+		})
+		console.log('count4', count)
+		setCount(count) // 赋的值和原来相同的话，并不会触发组件的重新渲染
+	}
+
+  console.log('app render', number, obj, count);
 
   return (<div>
     <div>{ number }</div>
@@ -42,6 +58,8 @@ const App = () => {
       setObj(obj); // 直接改变 `state`，在内存中指向的地址相同
     }}>按钮3</button>
     <button onClick={btn3clk}>按钮4</button>
+    <div>count: {count}</div>
+    <button onClick={handleClick}>click</button>
   </div>);
 }
 

@@ -461,7 +461,7 @@ useInsertionEffect 是在 React v18 新添加的 hooks ，它的用法和 useEff
 
 在介绍 useInsertionEffect 用途之前，先看一下 useInsertionEffect 的执行时机。
 
-```
+```js
 React.useEffect(()=>{
     console.log('useEffect 执行')
 },[])
