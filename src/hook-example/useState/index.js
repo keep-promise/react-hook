@@ -20,22 +20,22 @@ const App = () => {
 
   const btn3clk = ()=> {
     obj.name = 'bbb';
-    setObj(obj); // 直接改变 `state`，在内存中指向的地址相同
+    setObj(obj); // 直接改变 `state`，在内存中指向的地址相同，不会重新render
   }
 
   const handleClick = () => {
 		setCount(1)
-		console.log('count1', count) // 打印: 0 ，说明setCount是异步代码
+		// console.log('count1', count) // 打印: 0 ，说明setCount是异步代码
 
-		// 也可以给setCount赋值一个函数
-		setCount((count) => {
-			console.log('count2', count) // 打印旧的count 1
-			count++;
-			console.log('count3', count) // 打印新的count 2
-			return count // 返回最新值覆盖count
-		})
-		console.log('count4', count)
-		setCount(count) // 赋的值和原来相同的话，并不会触发组件的重新渲染
+		// // 也可以给setCount赋值一个函数
+		// setCount((count) => {
+		// 	console.log('count2', count) // 打印旧的count 1
+		// 	count++;
+		// 	console.log('count3', count) // 打印新的count 2
+		// 	return count // 返回最新值覆盖count
+		// })
+		// console.log('count4', count) // 0
+		// setCount(count) // 赋的值和原来相同的话，并不会触发组件的重新渲染
 	}
 
   console.log('app render', number, obj, count);
@@ -62,7 +62,6 @@ const App = () => {
     <button onClick={handleClick}>click</button>
   </div>);
 }
-
 export default App;
 
 // 点击按钮3 不会rerender，即不会打印app render

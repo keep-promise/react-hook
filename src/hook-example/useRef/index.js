@@ -27,7 +27,7 @@ function B() {
   return (<div ref={ref}></div>)
 }
 
-function C() {
+function App() {
   return(<>
     <A />
     <B />
@@ -35,4 +35,4 @@ function C() {
 }
 
 
-export default C;
+export default App;

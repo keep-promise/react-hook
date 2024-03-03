@@ -11,7 +11,7 @@ const tab = {
   tab3: mockList3
 }
 export default function Index(){
-  const [active, setActive] = React.useState('tab1') //需要立即响应的任务，立即更新任务
+  const [active, setActive] = React.useState('tab1') // 需要立即响应的任务，立即更新任务
   const deferActive = React.useDeferredValue(active) // 把状态延时更新，类似于过渡任务
   const handleChangeTab = (activeItem) => {
      setActive(activeItem) // 立即更新

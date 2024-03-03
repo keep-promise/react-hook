@@ -14,7 +14,7 @@ function App() {
 
   // useEffect(() => {
   //   console.log('依赖项为对象类型'); // 每次render都会重新执行
-  // }, [temObj]) // 每一次render，tempObj都是新的，所以每一次都会执行 -- 无限执行
+  // }, [temObj]) // 每一次render，tempObj都是新的，所以每一次都会执行
 
   useEffect(() => {
     console.log('依赖项为基本类型');
@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     console.log('无依赖useEffect');
     // setCount((count) => count+1); // 会无限执行
-  }) // 无依赖项，每次render都会查询执行 shouldComponentUpdate
+  }) // 无依赖项，每次render都会查询执行 等价--shouldComponentUpdate
 
   return (<div>
     <div>{count}</div>

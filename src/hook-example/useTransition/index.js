@@ -1,9 +1,9 @@
 import React from 'react';
 
 /* 模拟数据 */
-const mockList1 = new Array(10000).fill('tab1').map((item,index)=>item+'--'+index )
-const mockList2 = new Array(10000).fill('tab2').map((item,index)=>item+'--'+index )
-const mockList3 = new Array(10000).fill('tab3').map((item,index)=>item+'--'+index )
+const mockList1 = new Array(40000).fill('tab1').map((item,index)=>item+'--'+index )
+const mockList2 = new Array(40000).fill('tab2').map((item,index)=>item+'--'+index )
+const mockList3 = new Array(40000).fill('tab3').map((item,index)=>item+'--'+index )
  
 const tab = {
   tab1: mockList1,
@@ -22,7 +22,7 @@ export default function App(){
     });
   }
 
-  console.log('useTransition', active, isPending);
+  console.log('useTransition', active, isPending, renderData[0]);
   return <div>
     <div className='tab' >
       { Object.keys(tab).map((item, index)=> 

@@ -18,7 +18,7 @@ const App = () => {
   useLayoutEffect(() => {
     console.log('useLayoutEffect ref', target);
     let i = 0;
-    while(i <= 100000000) {
+    while(i <= 1000000) {
       i++;
     };
     setState("world hello");
