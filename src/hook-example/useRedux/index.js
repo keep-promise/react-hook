@@ -1,4 +1,4 @@
-// 使用useReducer、createContext、useContext实现react-redux
+// 使用useReducer、Context实现react-redux
 import React, { createContext, useContext, useReducer } from 'react';
 
 const ColorContext = createContext({});

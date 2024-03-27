@@ -24,7 +24,7 @@ class App extends Component {
 
 // btnClick2执行中isBatchingUpdate = true变量锁的存在，setTimeout中的回调函数加入到
 // 宏任务队列中，btnClick2执行完成isBatchingUpdate = false, 关闭批量更新锁，更新state
-// 此时开始执行宏任务，isBatchingUpdate = false，所以此时同步更新state
+// 开始执行宏任务，isBatchingUpdate = false，所以此时同步更新state
 
   btnClick2 = () => {
     setTimeout(() => {
