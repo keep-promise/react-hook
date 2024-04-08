@@ -1,7 +1,8 @@
-// import Example from './some-api/flushSync';
-import Example from './state/recoil';
-// import Preconnect from './some-api/preconnect';
-// Preconnect();
+// import Example from './state/recoil';
+// import Example from './state/redux';
+// import Example from './state/react-redux';
+import Example from './state/mobx';
+
 
 function App() {
   return (<Example />);
